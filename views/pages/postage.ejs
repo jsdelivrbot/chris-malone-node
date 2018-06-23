@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Postage</title>
+	<style type="text/css">
+		option {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<fieldset style="width: 30vw; height: 15vh">
+		<legend>Postal Rate Calculator</legend>
+	<form id="form1" method="get" action="/postageTotal">
+		<label>Weight (oz): <input style="width: 55px" min="0" max="13" step=".25" type="number" name="weight"></label><br><br>
+		<select name="ptype">
+			<option>Letters (Stamped)</option>
+			<option>Letters (Metered)</option>
+			<option>Large Envelopes (Flats)</option>
+			<option>First-Class Package Service - Retail</option>
+		</select><br><br>
+		<input type="submit" name="submit" value="Get Total">
+	</form>
+	</fieldset>
+</body>
+</html>
