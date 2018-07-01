@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reading Guide</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/readingGuide.css">
+	<script type="text/javascript" src="javascript/readingGuide.js"></script>
+
+	<script type="text/javascript">
+		
+	</script>
+</head>
+<body onload="eventListeners()">
+	<h1 align="center">Scripture Reading Guide</h1>
+
+	<div id="header">
+		<ul id="booksList">
+			<li><h3 onclick="loadOldTestament()">Old Testament</h3></li>
+			<li><h3>New Testament</h3></li>
+			<li><h3>Book of Mormon</h3></li>
+			<li><h3>Doctrine and Covenants</h3></li>
+		</ul>
+	</div>
+
+	<button id="debugToggleLogin" style="color: red">Debug Toggle Login</button>
+
+	<div id="loginDiv">
+		<button id="buttonLoadLogin">Login |</button><button id="buttonLoadRegister" style="margin-left: 5px">Register</button><hr>
+		<form id="loginForm">
+			<h3 style="color: white">Login</h3>
+			<input type="username" name="usernameLogin" placeholder="Username"><br><br>
+			<input type="password" name="passwordLogin" placeholder="Password"><br><br>
+			<input type="submit" name="submitLogin" value="Login">
+		</form>
+
+		<form id="registerForm" method="post" action="/createUser">
+			<h3 style="color: white">Register</h3>
+			<input type="username" name="usernameReg" placeholder="Username"><br><br>
+			<input type="password" name="passwordReg" placeholder="Password"><br><br>
+			<input type="submit" name="submitRegister" value="Register">
+		</form>
+	</div>
+
+	<div id="noteArea" style="display: none">
+		<h3 align="center">Notes</h3>
+		<hr>
+		<textarea placeholder="Write a Note to Save"></textarea>
+		<br>
+		<div id="noteControl">
+			<button>Save |</button>
+			<button>Copy to Clipboard</button>
+		</div>
+	</div>
+
+	<div id="dayList">
+		Select a Book
+	</div>
+</body>
+</html>

@@ -1,20 +1,63 @@
-const cool = require('cool-ascii-faces')
 const express = require('express')
+const session = require('express-session')
 const path = require('path')
+const { Pool, Client } = require('pg')
+const connectString = 'postgresql://PGPASSWORD=efe03326103c047d7cb6980a2f007957273f1f660c126e498619e4429a49b72f@ec2-23-23-110-26.compute-1.amazonaws.com:5432/d2n47671k9ffee'
+const pool = new Pool({
+  connectString: connectString,
+})
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
+})
+const client = new Client({
+  connectString: connectString,
+})
+client.connect()
+
+client.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  client.end();
+})
 const bodyParser = require('body-parser')
+const bcrypt = require('bcryptjs')
 const PORT = process.env.PORT || 5000
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
+
   .use(bodyParser.json())
+
   .use(bodyParser.urlencoded({
-  	extended: true
+    extended: true
   }))
+
+  .use(session({
+    secret: 'superSecret'
+  }))
+
   .set('views', path.join(__dirname, 'views'))
+
   .set('view engine', 'ejs')
+
+  ///////////////////////////////////////////////////////////////////
+
   .get('/', (req, res) => res.render('pages/index'))
-  .get('/cool', (req, res) => res.send(cool()))
+
+  .get('/readingguide', function(req, res) {
+    if (!req.session.loggedIn) {
+      req.session.loggedIn = false;
+      req.session.username = "";
+    }
+
+    var currentUser = req.session.username;
+
+    res.render('pages/bomguide/home', {user: currentUser})
+  })
+  
+
   .get('/postage', (req, res) => res.render('pages/postage'))
+
   .get('/postageTotal', function(req, res){
   	var weight = req.param('weight');
   	var ptype = req.param('ptype');
@@ -102,6 +145,13 @@ express()
 
   	res.render("pages/postageTotal", {totalCost: total, weight: weight, ptype: ptype});
   })
+
+  .post('/createUser', function(req, res) {
+    var username = req.body.usernameReg;
+    var password = req.body.passwordReg;
+    var hashedPassword = bcrypt.hashSync(password, 8);
+    res.send(username + hashedPassword);
+  })
  
   
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  .listen(PORT, '0.0.0.0', () => console.log(`Listening on ${ PORT }`))
