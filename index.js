@@ -1,24 +1,24 @@
 const express = require('express')
 const session = require('express-session')
 const path = require('path')
-const { Pool, Client } = require('pg')
-const connectString = 'postgresql://PGPASSWORD=efe03326103c047d7cb6980a2f007957273f1f660c126e498619e4429a49b72f@ec2-23-23-110-26.compute-1.amazonaws.com:5432/d2n47671k9ffee'
-const pool = new Pool({
-  connectString: connectString,
-})
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  pool.end()
-})
-const client = new Client({
-  connectString: connectString,
-})
-client.connect()
+// const { Pool, Client } = require('pg')
+// const connectString = 'postgresql://PGPASSWORD=efe03326103c047d7cb6980a2f007957273f1f660c126e498619e4429a49b72f@ec2-23-23-110-26.compute-1.amazonaws.com:5432/d2n47671k9ffee'
+// const pool = new Pool({
+//   connectString: connectString,
+// })
+// pool.query('SELECT NOW()', (err, res) => {
+//   console.log(err, res)
+//   pool.end()
+// })
+// const client = new Client({
+//   connectString: connectString,
+// })
+// //client.connect()
 
-client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  client.end();
-})
+// client.query('SELECT NOW()', (err, res) => {
+//   console.log(err, res)
+//   client.end();
+// })
 const bodyParser = require('body-parser')
 const bcrypt = require('bcryptjs')
 const PORT = process.env.PORT || 5000
