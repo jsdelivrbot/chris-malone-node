@@ -184,8 +184,8 @@ express()
         res.send("ERROR");
       } else {
         for (var i = 0; i < result.rows.length; i++) {
-          if(result.rows[i].username == "username") {
-            res.send(result.rows[i].username);
+          if(result.rows[i].username == username) {
+            var matchUsername = result.rows[i].username;
           }
         }
       }
