@@ -183,8 +183,8 @@ express()
       if (err) {
         console.log(err);
       } else {
-        result.json(result.rows);
-        console.log("result: " + result.json(result.rows));
+        var message = result.json(result.rows);
+        console.log("result: " + message);
       }
     })
       
