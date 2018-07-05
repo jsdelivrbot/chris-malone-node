@@ -170,14 +170,15 @@ express()
     res.send(username + hashedPassword);
   })
 
+/************************Login**********************************/
   .post('/loginUser', function(req, res) {
     var username = req.body.usernameLogin;
     var password = req.body.passpordLogin;
     var hashedPassword = bcrypt.hashSync(password, 8);
 
-    var loginQuery = "SELECT * FROM users WHERE username = username";
+    var loginQuery = "SELECT * FROM users WHERE username = 'username'";
 
-    db.query(loginQuery, username, function(err, res) {
+    db.query(loginQuery, function(err, res) {
       if (err) {
 
       } else {
