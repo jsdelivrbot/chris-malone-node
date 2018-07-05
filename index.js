@@ -179,7 +179,7 @@ express()
 
     //var loginQuery = ;
 
-    db.query("SELECT * FROM users", function(err, result) {
+    db.query("SELECT * FROM users;", function(err, result) {
       if (err) {
         //console.log(err);
       } else {
