@@ -183,7 +183,7 @@ express()
       if (err) {
         res.send("ERROR");
       } else {
-        res.send(result);
+        res.send(result.rows[1]);
       }
     })
       
