@@ -179,15 +179,16 @@ express()
 
     //var loginQuery = ;
 
-    var results = db.query("SELECT * FROM users");
-    //   if (err) {
-    //     //console.log(err);
-    //   } else {
-    //     //res.json(res.rows);
-    //     //console.log("result: " + res.json(res.rows));
-    //   }
-    // })
-    res.send(results);
+    db.query("SELECT * FROM users", function(err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        result.json(result.rows);
+        console.log("result: " + result.json(result.rows));
+      }
+    })
+      
+    res.send("TEST");
   })
  
  ////////////////////////////DEBUG/////////////////////////
