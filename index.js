@@ -183,7 +183,7 @@ express()
       if (err) {
         res.send("ERROR");
       } else {
-        res.send("RESPONSE");
+        res.send(result);
       }
     })
       
