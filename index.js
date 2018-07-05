@@ -171,7 +171,7 @@ express()
   })
 
 /************************Login**********************************/
-  .post('/loginUser', function(req, res) {
+  .get('/loginUser', function(req, res) {
     //console.log("arrived");
     //var username = req.body.usernameLogin;
     //var password = req.body.passpordLogin;
