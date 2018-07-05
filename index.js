@@ -174,7 +174,7 @@ express()
   .post('/loginUser', function(req, res) {
     //console.log("arrived");
     var username = req.body.usernameLogin;
-    var password = req.body.passpordLogin;
+    var password = req.body.passwordLogin;
     //var hashedPassword = bcrypt.hashSync(password, 8);
 
     //var loginQuery = ;
@@ -187,7 +187,7 @@ express()
     //     //console.log("result: " + res.json(res.rows));
     //   }
     // })
-
+    res.send(username + password);
   })
  
  ////////////////////////////DEBUG/////////////////////////
