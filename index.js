@@ -183,7 +183,7 @@ express()
       if (err) {
         res.send("ERROR");
       } else {
-        res.send(JSON.parse(result));
+        res.send(result);
       }
     })
       
