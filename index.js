@@ -186,6 +186,7 @@ express()
         for (var i = 0; i < result.rows.length; i++) {
           if(result.rows[i].username == username) {
             var matchUsername = result.rows[i].username;
+            res.send(matchUsername);
           }
         }
       }
