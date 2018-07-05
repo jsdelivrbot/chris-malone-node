@@ -180,10 +180,10 @@ express()
 
     db.query("SELECT * FROM users", function(err, res) {
       if (err) {
-        console.log(err);
+        //console.log(err);
       } else {
-        res.json(res.rows);
-        console.log("result: " + res.json(res.rows));
+        //res.json(res.rows);
+        //console.log("result: " + res.json(res.rows));
       }
     });
 
