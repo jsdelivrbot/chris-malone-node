@@ -178,7 +178,7 @@ express()
 
     //var loginQuery = ;
 
-    db.query("SELECT * FROM users WHERE username = username", function(err, res) {
+    db.query("SELECT * FROM users", function(err, res) {
       if (err) {
         console.log(err);
       } else {
