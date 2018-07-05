@@ -183,7 +183,11 @@ express()
       if (err) {
         res.send("ERROR");
       } else {
-        res.send(result.rows[1]);
+        for (var i = 0; i < result.rows.length; i++) {
+          if(result.rows[i].username == "username") {
+            res.send(result.rows[i].username);
+          }
+        }
       }
     })
       
