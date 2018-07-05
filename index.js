@@ -186,7 +186,7 @@ express()
         for (var i = 0; i < result.rows.length; i++) {
           if(result.rows[i].username == username) {
             var dbPass = result.rows[i].password;
-            bcrypt.compareSync(password, dbPass, function(err, res) {
+            bcrypt.compareSync("password", dbPass, function(err, res) {
               if (err) {
                 res.send("Invalid Password");
               } else {
