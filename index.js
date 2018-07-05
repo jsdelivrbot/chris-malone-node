@@ -181,9 +181,9 @@ express()
 
     db.query(loginQuery, function(err, result) {
       if (err) {
-        res.send("TEST");
+        res.send("ERROR");
       } else {
-        res.send("TEST");
+        res.send("RESPONSE");
       }
     })
       
