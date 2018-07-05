@@ -158,9 +158,32 @@ express()
     var username = req.body.usernameReg;
     var password = req.body.passwordReg;
     var hashedPassword = bcrypt.hashSync(password, 8);
-    db.query('INSERT INTO users (username, password) VALUES ("username", "hashedPassword")')
+    db.query("INSERT INTO users (username, password) VALUES ('username', 'hashedPassword')")
     res.send(username + hashedPassword);
   })
  
+ ////////////////////////////DEBUG/////////////////////////
+
+// Assign a route to GET all records from the person table:
+// app.get('/createUser', function(req, res) {
+//   // Using our database, run a query:
+//   db.query('SELECT * FROM users', function(error, result) {
+//     // If an error occurred...
+//     if (error) {
+//       // ... set an appropriate HTTP status code:
+//       res.status(400);
+//       // And return/send some JSON back for debugging. The
+//       // "return" keyword here is important; without it, your
+//       // app will try to run the logic down on line 34 even
+//       // though the query wasn't successful!
+//       return res.json({ error: error });
+//     }
+
+//     // If no error occurred, send the result back:
+//     res.json(result.rows);
+//   });
+// });
+
+/////////////////////////////DEBUG////////////////////////////
   
   .listen(PORT, '0.0.0.0', () => console.log(`Listening on ${ PORT }`))
