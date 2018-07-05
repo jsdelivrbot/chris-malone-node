@@ -183,7 +183,11 @@ express()
       if (err) {
         res.send("ERROR");
       } else {
-        res.send(result);
+        for (var i = 0; i < result.length; i++) {
+          if (result.username == "username") {
+            res.send("FOUND username");
+          }
+        }
       }
     })
       
