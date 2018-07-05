@@ -179,7 +179,7 @@ express()
 
     //var loginQuery = ;
 
-    //var results = db.query("SELECT * FROM users");
+    var results = db.query("SELECT * FROM users");
     //   if (err) {
     //     //console.log(err);
     //   } else {
@@ -187,7 +187,7 @@ express()
     //     //console.log("result: " + res.json(res.rows));
     //   }
     // })
-    res.send(username + password);
+    res.send(results);
   })
  
  ////////////////////////////DEBUG/////////////////////////
