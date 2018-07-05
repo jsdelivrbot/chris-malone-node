@@ -19,6 +19,14 @@ const path = require('path')
 //   console.log(err, res)
 //   client.end();
 // })
+
+const Pool = require('pg').Pool;
+
+const db = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+  })
+
 const bodyParser = require('body-parser')
 const bcrypt = require('bcryptjs')
 const PORT = process.env.PORT || 5000
@@ -150,6 +158,7 @@ express()
     var username = req.body.usernameReg;
     var password = req.body.passwordReg;
     var hashedPassword = bcrypt.hashSync(password, 8);
+    db.query('INSERT INTO users (username, password) VALUES ($username, $hashedPassword)')
     res.send(username + hashedPassword);
   })
  
