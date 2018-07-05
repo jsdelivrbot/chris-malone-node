@@ -185,8 +185,18 @@ express()
       } else {
         for (var i = 0; i < result.rows.length; i++) {
           if(result.rows[i].username == username) {
-            var matchUsername = result.rows[i].username;
-            res.send(matchUsername);
+            var dbPass = result.rows[i].password;
+            bcrypt.compare(password, dbPass, function(err, res) {
+              if (err) {
+                res.send("Invalid Password")
+              } else {
+                res.send("Maatch!");
+              }
+            })
+            res.send();
+          }
+          else {
+            res.send("No Match Found");
           }
         }
       }
