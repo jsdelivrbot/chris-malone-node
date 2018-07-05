@@ -164,10 +164,28 @@ express()
       if (err) {
         console.log(err.stack)
       } else {
-        
+
       }
     })
     res.send(username + hashedPassword);
+  })
+
+  .post('/loginUser', function(req, res) {
+    var username = req.body.usernameLogin;
+    var password = req.body.passpordLogin;
+    var hashedPassword = bcrypt.hashSync(password, 8);
+
+    var loginQuery = "SELECT * FROM users WHERE username IN ($1);";
+
+    db.query(loginQuery, username, function(err, res) {
+      if (err) {
+
+      } else {
+        res.json(res.rows);
+        console.log("result: " + res.json(res.rows));
+      }
+    });
+
   })
  
  ////////////////////////////DEBUG/////////////////////////
