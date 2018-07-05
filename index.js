@@ -181,13 +181,13 @@ express()
 
     db.query(loginQuery, function(err, result) {
       if (err) {
-        console.log(err);
+        res.send("TEST");
       } else {
-        console.log("TEST");
+        res.send("TEST");
       }
     })
       
-    res.send("TEST");
+    
   })
  
  ////////////////////////////DEBUG/////////////////////////
