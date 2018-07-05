@@ -158,7 +158,15 @@ express()
     var username = req.body.usernameReg;
     var password = req.body.passwordReg;
     var hashedPassword = bcrypt.hashSync(password, 8);
-    db.query("INSERT INTO users (username, password) VALUES ($username, $hashedPassword)")
+    const insertQuery = "INSERT INTO users (username, password) VALUES ($1, $2)";
+    const values = [username, hashedPassword];
+    db.query(insertQuery, values, (err, res) => {
+      if (err) {
+        console.log(err.stack)
+      } else {
+        
+      }
+    })
     res.send(username + hashedPassword);
   })
  
