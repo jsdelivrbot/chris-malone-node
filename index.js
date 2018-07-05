@@ -176,11 +176,11 @@ express()
     var password = req.body.passpordLogin;
     var hashedPassword = bcrypt.hashSync(password, 8);
 
-    var loginQuery = "SELECT * FROM users WHERE username = 'username'";
+    //var loginQuery = ;
 
-    db.query(loginQuery, function(err, res) {
+    db.query("SELECT * FROM users WHERE username = username", function(err, res) {
       if (err) {
-
+        console.log(err);
       } else {
         res.json(res.rows);
         console.log("result: " + res.json(res.rows));
