@@ -171,15 +171,15 @@ express()
   })
 
 /************************Login**********************************/
-  .get('/loginUser', function(req, res) {
+  .post('/loginUser', function(req, res) {
     //console.log("arrived");
-    //var username = req.body.usernameLogin;
-    //var password = req.body.passpordLogin;
+    var username = req.body.usernameLogin;
+    var password = req.body.passpordLogin;
     //var hashedPassword = bcrypt.hashSync(password, 8);
 
     //var loginQuery = ;
 
-    var results = db.query("SELECT * FROM users");
+    //var results = db.query("SELECT * FROM users");
     //   if (err) {
     //     //console.log(err);
     //   } else {
