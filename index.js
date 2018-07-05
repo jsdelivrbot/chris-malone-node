@@ -184,7 +184,7 @@ express()
         res.send("ERROR");
       } else {
         for (var i = 0; i < result.length; i++) {
-          if (result.username == "username") {
+          if (result[i].username == "username") {
             res.send("FOUND username");
           }
         }
