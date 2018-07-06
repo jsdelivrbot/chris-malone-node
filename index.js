@@ -186,7 +186,6 @@ express()
     var username = req.body.usernameLogin;
     var password = req.body.passwordLogin;
     var dbPass = "";
-    //var hashedPassword = bcrypt.hashSync(password, 8);
 
     var loginQuery = "SELECT * FROM users";
 
@@ -210,7 +209,7 @@ express()
           req.session.loggedIn = "wrong pw";
       }//END IF NOT ERROR
     })//END QUERY
-    req.session.loggedIn = true;
+    //req.session.loggedIn = true;
             res.redirect('/readingguide');
   })
  
