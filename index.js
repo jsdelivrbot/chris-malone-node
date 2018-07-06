@@ -193,7 +193,8 @@ express()
     // var password = req.body.passwordLogin;
     var loginQuery = "";
     var results = "";
-      results = function() {db.query("SELECT id, username, password FROM users", function(err, result) {
+      results = function() {
+        db.query("SELECT * FROM users", function(err, result) {
         return result;
       })}
 
