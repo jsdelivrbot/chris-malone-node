@@ -193,7 +193,7 @@ express()
     // var password = req.body.passwordLogin;
     // var loginQuery = "SELECT * FROM users";
     // db.query(loginQuery, function(err, result) {
-    res.send(req.session.notreal);
+    res.send("Hello");
     // var dbPass = "";
 
 
