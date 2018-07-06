@@ -162,7 +162,14 @@ express()
 
   	res.render("pages/postageTotal", {totalCost: total, weight: weight, ptype: ptype});
   })
+////////////////////////////////////////////////////////////////////////////
+  .get('/testHashCheck', function(req, res) {
+    var hashedPass = bcrypt.hashSync("password", 8);
+    var result = bcrypt.compareSync("password123", hashedPass);
 
+    res.send(result);
+  })
+////////////////////////////////////////////////////////////////////////////
   .post('/createUser', function(req, res) {
     var username = req.body.usernameReg;
     var password = req.body.passwordReg;
@@ -176,8 +183,8 @@ express()
 
       }
     })
-    res.send(username + hashedPassword);
-    //res.redirect('/readingguide');
+    //res.send(username + hashedPassword);
+    res.redirect('/readingguide');
   })
 
 /************************Login**********************************/
@@ -202,7 +209,7 @@ express()
           
         }//END FOR LOOP
 
-       if(bcrypt.compareSync("$2a$08$aPduW/QB1KnShVfRNcFrVuKqRTwnyfjSaHobKMkXJ4B/0kavgoayO", "$2a$08$aPduW/QB1KnShVfRNcFrVuKqRTwnyfjSaHobKMkXJ4B/0kavgoayO")) {
+       if(bcrypt.compareSync(password, dbPass)) {
             req.session.loggedIn = true;
         }
         else{}
@@ -211,7 +218,8 @@ express()
         }
     })//END QUERY
     //req.session.loggedIn = true;
-            res.redirect('/readingguide');
+    res.send(password + "\n" + dbPass);
+            //res.redirect('/readingguide');
   })
  
  ////////////////////////////DEBUG/////////////////////////
