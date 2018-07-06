@@ -54,13 +54,14 @@ express()
 
   .get('/readingguide', function(req, res) {
 
-    function isLoggedIn(req, res, next) {
-      return (req.session.loggedIn === true) ? next() : null;
+    // function isLoggedIn(req, res, next) {
+    //   return (req.session.loggedIn === true) ? next() : null;
+    // }
+
+    if (req.session.loggedIn === undefined) {
+      req.session.loggedIn = false;
     }
-    
-    if (!isLoggedIn) {
-        req.session.loggedIn = false;
-    }
+
     req.session.username = "Tim";
 
 
