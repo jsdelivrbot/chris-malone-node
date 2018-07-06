@@ -167,7 +167,7 @@ express()
 
       }
     })
-    res.send(username + hashedPassword);
+    //res.send(username + hashedPassword);
     res.redirect('/readingguide');
   })
 
