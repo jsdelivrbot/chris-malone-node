@@ -54,7 +54,7 @@ express()
 
   .get('/readingguide', function(req, res) {
     if (!req.session.loggedIn) {
-      req.session.loggedIn = false;
+      req.session.loggedIn = "no attempt made";
       req.session.username = "Tim";
     }
 
@@ -192,14 +192,14 @@ express()
           if(result.rows[i].username == username)
             var dbPass = result.rows[i].password;
           else
-          req.session.loggedIn = false;
+          req.session.loggedIn = "no username";
         }//END FOR LOOP
 
        if(bcrypt.compareSync(password, dbPass)) {
-            req.session.loggedIn = true;
+            req.session.loggedIn = "logged in";
         }
         else
-          req.session.loggedIn = false;
+          req.session.loggedIn = "wrong pw";
       }//END IF NOT ERROR
     })//END QUERY
             res.redirect('/readingguide');
