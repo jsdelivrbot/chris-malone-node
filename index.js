@@ -182,7 +182,7 @@ express()
 
     db.query(loginQuery, function(err, result) {
       if (err) {
-        res.send("ERROR");
+            res.redirect('/readingguide');
       } 
 
       else {//IF NOT ERROR
