@@ -194,8 +194,10 @@ express()
     var loginQuery = "SELECT id, username, password FROM 'users' WHERE username = 'acedoutry'";
     var results = "";
     db.query(loginQuery, function(err, result) => {
-      res.send(result);
+      
     })
+
+    res.send(results);
     
     // var dbPass = "";
 
