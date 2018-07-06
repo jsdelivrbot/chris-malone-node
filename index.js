@@ -54,13 +54,16 @@ express()
 
   .get('/readingguide', function(req, res) {
 
-if( typeof req.session.loggedIn !== 'undefined' ) {
-
-}
-  else {
-    req.session.loggedIn = "no attempt made";
+    function isLoggedIn(req, res, next) {
+      return (req.session.loggedIn === true) ? next() : null;
+    }
+    
+    if (!isLoggedIn) {
+        req.session.loggedIn = false;
+    }
     req.session.username = "Tim";
-}
+
+
 
     var currentUser = req.session.username;
     var localLoggedIn = req.session.loggedIn;
