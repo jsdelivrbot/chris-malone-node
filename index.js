@@ -202,7 +202,7 @@ express()
           
         }//END FOR LOOP
 
-       if(bcrypt.compareSync("password", "$2a$08$aPduW/QB1KnShVfRNcFrVuKqRTwnyfjSaHobKMkXJ4B/0kavgoayO")) {
+       if(bcrypt.compareSync("$2a$08$aPduW/QB1KnShVfRNcFrVuKqRTwnyfjSaHobKMkXJ4B/0kavgoayO", "$2a$08$aPduW/QB1KnShVfRNcFrVuKqRTwnyfjSaHobKMkXJ4B/0kavgoayO")) {
             req.session.loggedIn = true;
         }
         else{}
