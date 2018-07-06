@@ -31,14 +31,6 @@ const bodyParser = require('body-parser')
 const bcrypt = require('bcryptjs')
 const PORT = process.env.PORT || 5000
 
-
-function isset(x){
-    if( typeof x !== 'undefined' ) {
-        return true;
-    }
-    return false;
-}
-
 express()
   .use(express.static(path.join(__dirname, 'public')))
 
@@ -62,12 +54,13 @@ express()
 
   .get('/readingguide', function(req, res) {
 
-    if (!isset(req.session.loggedIn)) {
-      req.session.loggedIn = "no attempt made";
-      req.session.username = "Tim";
-    }
+if( typeof req.session.loggedIn !== 'undefined' ) {
 
-
+}
+  else {
+    req.session.loggedIn = "no attempt made";
+    req.session.username = "Tim";
+}
 
     var currentUser = req.session.username;
     var localLoggedIn = req.session.loggedIn;
