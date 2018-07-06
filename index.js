@@ -59,8 +59,9 @@ express()
     }
 
     var currentUser = req.session.username;
+    var loggedIn = req.session.loggedIn;
 
-    res.render('pages/bomguide/home', {user: currentUser})
+    res.render('pages/bomguide/home', {user: currentUser, loggedIn: loggedIn})
   })
   
 
@@ -191,14 +192,14 @@ express()
           if(result.rows[i].username == username)
             var dbPass = result.rows[i].password;
           else
-            console.log("Invalid Credentials");
+          req.session.loggedIn = false;
         }//END FOR LOOP
 
        if(bcrypt.compareSync(password, dbPass)) {
-            alert("Logged in!");
+            req.session.loggedIn = true;
         }
         else
-            alert("Not Logged In");
+          req.session.loggedIn = false;
       }//END IF NOT ERROR
     })//END QUERY
             res.redirect('/readingguide');
