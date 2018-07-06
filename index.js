@@ -32,8 +32,8 @@ const bcrypt = require('bcryptjs')
 const PORT = process.env.PORT || 5000
 
 
-function isset(var){
-    if( typeof var !== 'undefined' ) {
+function isset(x){
+    if( typeof x !== 'undefined' ) {
         return true;
     }
     return false;
@@ -61,6 +61,7 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
 
   .get('/readingguide', function(req, res) {
+
     if (!isset(req.session.loggedIn)) {
       req.session.loggedIn = "no attempt made";
       req.session.username = "Tim";
