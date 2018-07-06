@@ -182,34 +182,34 @@ express()
 
 /************************Login**********************************/
   .post('/loginUser', function(req, res) {
-    //console.log("arrived");
-    // var username = req.body.usernameLogin;
-    // var password = req.body.passwordLogin;
-    // var dbPass = "";
-    // //var hashedPassword = bcrypt.hashSync(password, 8);
+    console.log("arrived");
+    var username = req.body.usernameLogin;
+    var password = req.body.passwordLogin;
+    var dbPass = "";
+    //var hashedPassword = bcrypt.hashSync(password, 8);
 
-    // var loginQuery = "SELECT * FROM users";
+    var loginQuery = "SELECT * FROM users";
 
-    // db.query(loginQuery, function(err, result) {
-    //   if (err) {
-    //     console.log("ERROR");
-    //   } 
+    db.query(loginQuery, function(err, result) {
+      if (err) {
+        console.log("ERROR");
+      } 
 
-    //   else {//IF NOT ERROR
-    //     for (var i = 0; i < result.rows.length; i++) {
-    //       if(result.rows[i].username == username)
-    //         var dbPass = result.rows[i].password;
-    //       else
-    //       req.session.loggedIn = "no username";
-    //     }//END FOR LOOP
+      else {//IF NOT ERROR
+        for (var i = 0; i < result.rows.length; i++) {
+          if(result.rows[i].username == username)
+            var dbPass = result.rows[i].password;
+          else
+          req.session.loggedIn = "no username";
+        }//END FOR LOOP
 
-    //    if(bcrypt.compareSync(password, dbPass)) {
-    //         req.session.loggedIn = "logged in";
-    //     }
-    //     else
-    //       req.session.loggedIn = "wrong pw";
-    //   }//END IF NOT ERROR
-    // })//END QUERY
+       if(bcrypt.compareSync("password", dbPass)) {
+            req.session.loggedIn = "logged in";
+        }
+        else
+          req.session.loggedIn = "wrong pw";
+      }//END IF NOT ERROR
+    })//END QUERY
     req.session.loggedIn = true;
             res.redirect('/readingguide');
   })
