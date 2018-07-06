@@ -172,34 +172,34 @@ express()
 
 /************************Login**********************************/
   .post('/loginUser', function(req, res) {
-    //console.log("arrived");
-    var username = req.body.usernameLogin;
-    var password = req.body.passwordLogin;
-    var dbPass = "";
-    //var hashedPassword = bcrypt.hashSync(password, 8);
+    // //console.log("arrived");
+    // var username = req.body.usernameLogin;
+    // var password = req.body.passwordLogin;
+    // var dbPass = "";
+    // //var hashedPassword = bcrypt.hashSync(password, 8);
 
-    var loginQuery = "SELECT * FROM users";
+    // var loginQuery = "SELECT * FROM users";
 
-    db.query(loginQuery, function(err, result) {
-      if (err) {
-            res.redirect('/readingguide');
-      } 
+    // db.query(loginQuery, function(err, result) {
+    //   if (err) {
+    //         res.redirect('/readingguide');
+    //   } 
 
-      else {//IF NOT ERROR
-        for (var i = 0; i < result.rows.length; i++) {
-          if(result.rows[i].username == username)
-            var dbPass = result.rows[i].password;
-          else
-            res.redirect('/readingguide');
-        }//END FOR LOOP
+    //   else {//IF NOT ERROR
+    //     for (var i = 0; i < result.rows.length; i++) {
+    //       if(result.rows[i].username == username)
+    //         var dbPass = result.rows[i].password;
+    //       else
+    //         res.redirect('/readingguide');
+    //     }//END FOR LOOP
 
-       if(bcrypt.compareSync(password, dbPass)) {
-            res.redirect('/readingguide');
-        }
-        else
-            res.redirect('/');
-      }//END IF NOT ERROR
-    })//END QUERY
+    //    if(bcrypt.compareSync(password, dbPass)) {
+    //         res.redirect('/readingguide');
+    //     }
+    //     else
+    //         res.redirect('/');
+    //   }//END IF NOT ERROR
+    // })//END QUERY
             res.redirect('/readingguide');
   })
  
