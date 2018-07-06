@@ -53,10 +53,10 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
 
   .get('/readingguide', function(req, res) {
-    if (!req.session.loggedIn) {
-      req.session.loggedIn = "no attempt made";
-      req.session.username = "Tim";
-    }
+    // if (!req.session.loggedIn) {
+    //   req.session.loggedIn = "no attempt made";
+    //   req.session.username = "Tim";
+    // }
 
     var currentUser = req.session.username;
     var localLoggedIn = req.session.loggedIn;
