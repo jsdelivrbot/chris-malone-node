@@ -190,14 +190,16 @@ express()
           if(result.rows[i].username == username)
             var dbPass = result.rows[i].password;
           else
-            res.send("No Match Found");
+            res.redirect('/readingguide');
         }//END FOR LOOP
 
        if(bcrypt.compareSync(password, dbPass)) {
-            res.send("Logged In!"); 
+            res.redirect('/readingguide');
         }
+        else
+            res.redirect('/');
       }//END IF NOT ERROR
-    })
+    })//END QUERY
     res.send("TEST");
   })
  
