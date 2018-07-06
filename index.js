@@ -198,16 +198,17 @@ express()
         for (var i = 0; i < result.rows.length; i++) {
           if(result.rows[i].username == username)
             var dbPass = result.rows[i].password;
-          else
-          req.session.loggedIn = "no username";
+          else{}
+          
         }//END FOR LOOP
 
-       if(bcrypt.compareSync("password", dbPass)) {
-            req.session.loggedIn = "logged in";
+       if(bcrypt.compareSync("password", "$2a$08$aPduW/QB1KnShVfRNcFrVuKqRTwnyfjSaHobKMkXJ4B/0kavgoayO")) {
+            req.session.loggedIn = true;
         }
-        else
-          req.session.loggedIn = "wrong pw";
-      }//END IF NOT ERROR
+        else{}
+
+        //END IF NOT ERROR
+        }
     })//END QUERY
     //req.session.loggedIn = true;
             res.redirect('/readingguide');
