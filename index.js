@@ -205,6 +205,8 @@ express()
         for (var i = 0; i < result.rows.length; i++) {
           if(result.rows[i].username == username)
             dbPass = result.rows[i].password;
+              res.send(dbPass);
+
           else{}
           
         }//END FOR LOOP
@@ -218,7 +220,7 @@ express()
         }
     })//END QUERY
     //req.session.loggedIn = true;
-    res.send(password + "\n" + dbPass);
+    // res.send(password + "\n" + dbPass);
             //res.redirect('/readingguide');
   })
  
