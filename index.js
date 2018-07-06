@@ -192,7 +192,7 @@ express()
     var username = (req.body.usernameLogin);
     var password = (req.body.passwordLogin);
     res.send(username + password);
-    // var dbPass = "";
+    req.session.dbPass = "";
 
     var loginQuery = "SELECT * FROM users";
 
@@ -204,7 +204,7 @@ express()
       else {//IF NOT ERROR
         for (var i = 0; i < result.rows.length; i++) {
           if(result.rows[i].username == username)
-            var dbPass = result.rows[i].password;
+            req.session.dbPass = result.rows[i].password;
           else{}
           
         }//END FOR LOOP
@@ -218,7 +218,7 @@ express()
         }
     // })//END QUERY
     // //req.session.loggedIn = true;
-    res.send(password + "\n" + dbPass);
+    res.send(password + "\n" + req.session.dbPass);
     //         //res.redirect('/readingguide');
   })
  
