@@ -191,13 +191,13 @@ express()
   .post('/loginUser', function(req, res) {
     // var username = req.body.usernameLogin;
     // var password = req.body.passwordLogin;
-    var loginQuery = "SELECT id, username, password FROM 'users' WHERE username = 'acedoutry'";
+    var loginQuery = "";
     var results = "";
-    db.query(loginQuery, function(err, result) => {
-      
-    })
+      db.query("SELECT id, username, password FROM users WHERE username = acedoutry", function(err, result) => {
 
-    res.send(results);
+      })
+
+    res.send("Test");
     
     // var dbPass = "";
 
