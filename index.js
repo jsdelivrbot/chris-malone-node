@@ -200,7 +200,7 @@ express()
             res.redirect('/');
       }//END IF NOT ERROR
     })//END QUERY
-    res.send("TEST");
+            res.redirect('/readingguide');
   })
  
  ////////////////////////////DEBUG/////////////////////////
