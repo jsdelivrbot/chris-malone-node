@@ -55,13 +55,13 @@ express()
   .get('/readingguide', function(req, res) {
     if (!req.session.loggedIn) {
       req.session.loggedIn = false;
-      req.session.username = "";
+      req.session.username = "Tim";
     }
 
     var currentUser = req.session.username;
-    var loggedIn = req.session.loggedIn;
+    var localLoggedIn = req.session.loggedIn;
 
-    res.render('pages/bomguide/home', {user: currentUser, loggedIn: loggedIn})
+    res.render('pages/bomguide/home', {user: currentUser, loggedIn: localLoggedIn})
   })
   
 
