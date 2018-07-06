@@ -191,7 +191,7 @@ express()
   .post('/loginUser', function(req, res) {
     // var username = req.body.usernameLogin;
     // var password = req.body.passwordLogin;
-    var loginQuery = "SELECT * FROM users";
+    var loginQuery = "SELECT * FROM users WHERE username = password";
     var results = "";
     db.query(loginQuery, function(err, result) {
       res.send(result);
