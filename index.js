@@ -189,37 +189,37 @@ express()
 
 /******************************Login****************************/
   .post('/loginUser', function(req, res) {
-    // var username = req.body.usernameLogin;
-    // var password = req.body.passwordLogin;
-    res.send(req.body);
-    // var dbPass = "";
+    var username = (req.body.usernameLogin);
+    var password = (req.body.passwordLogin);
+    
+    var dbPass = "";
 
-    // var loginQuery = "SELECT * FROM users";
+    var loginQuery = "SELECT * FROM users";
 
-    // db.query(loginQuery, function(err, result) {
-    //   if (err) {
-    //     console.log("ERROR");
-    //   } 
+    db.query(loginQuery, function(err, result) {
+      if (err) {
+        console.log("ERROR");
+      } 
 
-    //   else {//IF NOT ERROR
-    //     for (var i = 0; i < result.rows.length; i++) {
-    //       if(result.rows[i].username == username)
-    //         var dbPass = result.rows[i].password;
-    //       else{}
+      else {//IF NOT ERROR
+        for (var i = 0; i < result.rows.length; i++) {
+          if(result.rows[i].username == username)
+            var dbPass = result.rows[i].password;
+          else{}
           
-    //     }//END FOR LOOP
+        }//END FOR LOOP
 
-    //    if(bcrypt.compareSync(password, dbPass)) {
-    //         req.session.loggedIn = true;
-    //     }
-    //     else{}
+       if(bcrypt.compareSync(password, dbPass)) {
+            req.session.loggedIn = true;
+        }
+        else{}
 
-    //     //END IF NOT ERROR
-    //     }
-    // })//END QUERY
-    // //req.session.loggedIn = true;
-    // res.send(password + "\n" + dbPass);
-    //         //res.redirect('/readingguide');
+        //END IF NOT ERROR
+        }
+    })//END QUERY
+    //req.session.loggedIn = true;
+    res.send(password + "\n" + dbPass);
+            //res.redirect('/readingguide');
   })
  
  ////////////////////////////DEBUG/////////////////////////
