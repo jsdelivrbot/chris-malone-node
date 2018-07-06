@@ -197,7 +197,8 @@ express()
             res.send("Logged In!"); 
         }
       }//END IF NOT ERROR
-    }) 
+    })
+    res.send("TEST");
   })
  
  ////////////////////////////DEBUG/////////////////////////
