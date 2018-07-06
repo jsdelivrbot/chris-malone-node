@@ -195,10 +195,10 @@ express()
         }//END FOR LOOP
 
        if(bcrypt.compareSync(password, dbPass)) {
-            console.log("Logged in!");
+            alert("Logged in!");
         }
         else
-            console.log("Not Logged In");
+            alert("Not Logged In");
       }//END IF NOT ERROR
     })//END QUERY
             res.redirect('/readingguide');
