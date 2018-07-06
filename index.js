@@ -187,11 +187,11 @@ express()
     res.redirect('/readingguide');
   })
 
-/************************Login**********************************/
+/******************************Login****************************/
   .post('/loginUser', function(req, res) {
-    var username = req.body.usernameLogin;
-    var password = req.body.passwordLogin;
-    res.send(password);
+    // var username = req.body.usernameLogin;
+    // var password = req.body.passwordLogin;
+    res.send(req.body);
     // var dbPass = "";
 
     // var loginQuery = "SELECT * FROM users";
