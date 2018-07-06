@@ -175,6 +175,7 @@ express()
     //console.log("arrived");
     var username = req.body.usernameLogin;
     var password = req.body.passwordLogin;
+    var dbPass = "";
     //var hashedPassword = bcrypt.hashSync(password, 8);
 
     var loginQuery = "SELECT * FROM users";
@@ -182,22 +183,21 @@ express()
     db.query(loginQuery, function(err, result) {
       if (err) {
         res.send("ERROR");
-      } else {
+      } 
+
+      else {//IF NOT ERROR
         for (var i = 0; i < result.rows.length; i++) {
-          if(result.rows[i].username == username) {
+          if(result.rows[i].username == username)
             var dbPass = result.rows[i].password;
-           if(bcrypt.compareSync(password, dbPass)) {
-            res.send("Logged In!");
-           }
-          }
-          else {
+          else
             res.send("No Match Found");
-          }
+        }//END FOR LOOP
+
+       if(bcrypt.compareSync(password, dbPass)) {
+            res.send("Logged In!"); 
         }
-      }
-    })
-      
-    
+      }//END IF NOT ERROR
+    }) 
   })
  
  ////////////////////////////DEBUG/////////////////////////
