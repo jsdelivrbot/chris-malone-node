@@ -204,8 +204,7 @@ express()
       else {//IF NOT ERROR
         for (var i = 0; i < result.rows.length; i++) {
           if(result.rows[i].username == username)
-            dbPass = result.rows[i].password;
-          console.log(dbPass);
+            var dbPass = result.rows[i].password;
           else{}
           
         }//END FOR LOOP
