@@ -186,13 +186,9 @@ express()
         for (var i = 0; i < result.rows.length; i++) {
           if(result.rows[i].username == username) {
             var dbPass = result.rows[i].password;
-            bcrypt.compareSync("password", dbPass, function(fail, success) {
-              if (fail) {
-                res.send("Invalid Password");
-              } else {
-                res.send("Match!");
-              }
-            })
+           if(bcrypt.compareSync(password, dbPass)) {
+            res.send("Logged In!");
+           }
           }
           else {
             res.send("No Match Found");
