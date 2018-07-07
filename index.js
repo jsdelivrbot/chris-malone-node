@@ -199,7 +199,7 @@ express()
         }
           console.log('hashPass:', res.rows)
         })
-        res.send("temp");
+        res.send(hashPass);
 
       
 
