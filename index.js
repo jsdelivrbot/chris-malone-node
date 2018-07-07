@@ -193,14 +193,15 @@ express()
     // var password = req.body.passwordLogin;
     var loginQuery = "";
     var results = "";
-      db.query("SELECT * FROM users"), function(err, result) {
+      db.query('SELECT * FROM users WHERE id = $1', [1], (err, res) => {
         if (err) {
-          res.status(400);
-          return res.json({ error:error });
+          throw err
         }
-        res.json(result.rows);
+
+          console.log('hashPass:', res.rows)
+        }
       };
-        res.send(result.rows);
+        res.send("temp");
 
       
 
