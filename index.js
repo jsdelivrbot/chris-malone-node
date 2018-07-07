@@ -195,10 +195,12 @@ express()
     var results = "";
       db.query("SELECT * FROM users"), function(err, result) {
         if (err) {
-
+          res.status(400);
+          return res.json({ error:error });
         }
-        res.send(result);
+        res.json(result.rows);
       };
+        res.send(result.rows);
 
       
 
