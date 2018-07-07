@@ -197,9 +197,8 @@ express()
         if (err) {
           throw err
         }
-
           console.log('hashPass:', res.rows)
-        }
+        })
         res.send("temp");
 
       
