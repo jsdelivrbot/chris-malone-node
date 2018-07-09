@@ -1,12 +1,18 @@
+body {
+	overflow-y: scroll;
+}
+
 #header {
 
-	display: fixed;
+	position: fixed;
+	top: -1%;
+	width: 98%;
 	background-color: #3c4d71;
 }
 
 #booksList {
 	font-size: 12px;
-	margin: 10px;
+	/*margin: 10px;*/
 	list-style: none;
 	color: white;
 	padding-left: 20px;
@@ -34,8 +40,9 @@
 
 #loginDiv {
 	padding: 10px;
-	display: fixed;
-	float: right;
+	position: fixed;
+	top: 10%;
+	right: 10px;
 	width: 20vw;
 	background-color: #3c4d71;
 }
@@ -62,12 +69,14 @@ button {
 
 #noteArea {
 	background-color: #3c4d71;
+	position: fixed;
 	padding: 10px;
 	float: right;
 	width: 30vw;
 	height: 40vh;
 	right: 10px;
 	color: white;
+	top: 10%;
 }
 
 #noteArea textarea {
@@ -86,4 +95,27 @@ button {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#otdays {
+	 display: none;
+}
+
+#otdayslist, #ntdayslist, #bomdayslist, #dncdayslist {
+	list-style: none;
+	line-height: 1.5em;
+}
+
+#otdayslist li, #ntdayslist li, #bomdayslist li, #dncdayslist li {
+	width: 50%;
+}
+
+#otdayslist:hover, #ntdayslist:hover, #bomdayslist:hover, #dncdayslist:hover {
+	list-style: none;
+	line-height: 1.5em;
+}
+
+#otdayslist li:hover, #ntdayslist li:hover, #bomdayslist li:hover, #dncdayslist li:hover {
+	cursor: pointer;
+	transform: scale(1.01);
 }

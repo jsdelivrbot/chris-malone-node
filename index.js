@@ -189,17 +189,38 @@ express()
 
 /******************************Login****************************/
   .post('/loginUser', function(req, res) {
+    // const userReq = req.body
+    // let user
+
+    // const findUser(userReq)
+    // .then(foundUser => {
+    //   user = foundUser
+    //   return bcrypt.compareSync(userReq.password, foundUser)
+    // })
+    // .then((res) => createToken())
+    // .then(token => updateUserToken(token, user))
+    // .then(() => {
+    //   delete user.paassword_digest
+    //   res.status(200).json(user)
+    // })
+    // .catch((err) => console.error(err))
+
+
+
+
+
+
     // var username = req.body.usernameLogin;
     // var password = req.body.passwordLogin;
-    var loginQuery = "";
-    var results = "";
-      db.query('SELECT * FROM users WHERE id = $1', [1], (err, res) => {
-        if (err) {
-          throw err
-        }
-          console.log('hashPass:', res.rows)
-        })
-        res.send(hashPass);
+    // var loginQuery = "";
+    // var results = "";
+    //   db.query('SELECT * FROM users WHERE id = $1', [1], (err, res) => {
+    //     if (err) {
+    //       throw err
+    //     }
+    //       console.log('hashPass:', res.rows)
+    //     })
+    //     res.send(hashPass);
 
       
 
