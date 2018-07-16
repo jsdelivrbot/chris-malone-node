@@ -62,7 +62,7 @@ express()
       req.session.loggedIn = false;
     }
 
-    req.session.username = "Tim";
+    //req.session.username = "Tim";
 
 
 
@@ -189,94 +189,34 @@ express()
 
 /******************************Login****************************/
   .post('/loginUser', function(req, res) {
-    // const userReq = req.body
-    // let user
-
-    // const findUser(userReq)
-    // .then(foundUser => {
-    //   user = foundUser
-    //   return bcrypt.compareSync(userReq.password, foundUser)
-    // })
-    // .then((res) => createToken())
-    // .then(token => updateUserToken(token, user))
-    // .then(() => {
-    //   delete user.paassword_digest
-    //   res.status(200).json(user)
-    // })
-    // .catch((err) => console.error(err))
+    const username = req.body.usernameLogin;
+    const password = req.body.passwordLogin;
 
 
+    db.query("SELECT * FROM users", function(err, result) {
+      if (err) {
+          req.session.loggedIn = false;
+          req.session.user = "None";
+      } else {
+        res.send(result);
+      }
 
-
-
-
-    // var username = req.body.usernameLogin;
-    // var password = req.body.passwordLogin;
-    // var loginQuery = "";
-    // var results = "";
-    //   db.query('SELECT * FROM users WHERE id = $1', [1], (err, res) => {
-    //     if (err) {
-    //       throw err
-    //     }
-    //       console.log('hashPass:', res.rows)
-    //     })
-    //     res.send(hashPass);
-
-      
-
-    //res.send(results);
-    // var dbPass = "";
-
-
-
-    
-    //   if (err) {
-    //     console.log("ERROR");
-    //   } 
-
-    //   else {//IF NOT ERROR
-    //     for (var i = 0; i < result.rows.length; i++) {
-    //       if(result.rows[i].username == username)
-    //         var dbPass = result.rows[i].password;
-    //       else{}
-          
-    //     }//END FOR LOOP
-
-    //    if(bcrypt.compareSync(password, dbPass)) {
-    //         req.session.loggedIn = true;
-    //     }
-    //     else{}
-
-    //     //END IF NOT ERROR
-    //     }
-    // })//END QUERY
-    // //req.session.loggedIn = true;
-    // res.send(password + "\n" + dbPass);
-    //         //res.redirect('/readingguide');
+      bcrypt.compare(password, result.rows[0].password_hash, (error, match) => {
+        if (error) {
+          req.session.loggedIn = false;
+          req.session.user = "None"; 
+        }
+        if (match) {
+          req.session.loggedIn = true;
+          req.session.user = username;
+        } else {
+          req.session.user = "None";
+          req.session.loggedIn = false;
+        }
+      })
+      //res.send(result);  
+    })
+    //res.redirect('/readingguide');
   })
  
- ////////////////////////////DEBUG/////////////////////////
-
-// Assign a route to GET all records from the person table:
-// app.get('/createUser', function(req, res) {
-//   // Using our database, run a query:
-//   db.query('SELECT * FROM users', function(error, result) {
-//     // If an error occurred...
-//     if (error) {
-//       // ... set an appropriate HTTP status code:
-//       res.status(400);
-//       // And return/send some JSON back for debugging. The
-//       // "return" keyword here is important; without it, your
-//       // app will try to run the logic down on line 34 even
-//       // though the query wasn't successful!
-//       return res.json({ error: error });
-//     }
-
-//     // If no error occurred, send the result back:
-//     res.json(result.rows);
-//   });
-// });
-
-/////////////////////////////DEBUG////////////////////////////
-  
   .listen(PORT, '0.0.0.0', () => console.log(`Listening on ${ PORT }`))
