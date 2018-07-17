@@ -210,9 +210,9 @@ express()
             req.session.user = "None";
             req.session.loggedIn = false;
           }
+        res.send(match);
         })
 
-        res.send(match);
       }
       //res.send(result);  
     })
