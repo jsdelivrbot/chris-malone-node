@@ -209,8 +209,8 @@ express()
           } else {
             req.session.user = "None";
             req.session.loggedIn = false;
-          }
         res.send(match);
+          }
         })
 
       }
