@@ -201,15 +201,17 @@ express()
         var match = bcrypt.compare(password, result.rows[0].password_hash, (error, match) => {
           if (error) {
             req.session.loggedIn = false;
-            req.session.user = "None"; 
+            req.session.user = "None";
+            return "error";
           }
           if (match) {
             req.session.loggedIn = true;
             req.session.user = username;
+            return "success";
           } else {
             req.session.user = "None";
             req.session.loggedIn = false;
-        res.send(match);
+          res.send(match);
           }
         })
 
