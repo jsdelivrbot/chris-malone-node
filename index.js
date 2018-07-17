@@ -193,7 +193,7 @@ express()
     const password = req.body.passwordLogin;
 
 
-    db.query("SELECT * FROM users WHERE username = $1", username, (err, result) => {
+    db.query("SELECT * FROM users WHERE username = 'password'", function(err, result) {
       if (err) {
           req.session.loggedIn = false;
           req.session.user = "None";
