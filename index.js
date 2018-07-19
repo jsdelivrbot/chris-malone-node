@@ -198,7 +198,8 @@ express()
           req.session.loggedIn = false;
           req.session.user = "None";
       } else {
-        var match = bcrypt.compare(password, result.rows[0].password_hash, (error, match) => {
+        var match = "";
+        match = bcrypt.compare(password, result.rows[0].password_hash, (error, match) => {
           if (error) {
             req.session.loggedIn = false;
             req.session.user = "None";
